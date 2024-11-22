@@ -21,10 +21,20 @@ export class ProductsService {
       .pipe(tap(console.log));
   }
 
+  public addProduct(product: any): Observable<any> {
+    return this._httpClient.post('https://fakestoreapi.com/products', product);
+  }
+
   public updateProduct(product: any): Observable<any> {
     return this._httpClient
       .put(`https://fakestoreapi.com/products/${product.id}`, product)
       .pipe(tap(console.log));
+  }
+
+  public deleteProduct(idProduct: any): Observable<any> {
+    return this._httpClient.delete(
+      `https://fakestoreapi.com/products/${idProduct}`
+    );
   }
   // deliverys
 }
