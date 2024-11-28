@@ -16,8 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
-    provideStore(),
-    provideState('products', initialState),
+    provideStore(initialState),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
   ],
 };

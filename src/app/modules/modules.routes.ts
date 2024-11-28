@@ -2,17 +2,24 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'products',
+    path: '',
     loadComponent: () =>
-      import('./products/pages/products-home/products-home.component').then(
-        (c) => c.ProductsHomeComponent
-      ),
-  },
-  {
-    path: 'deliverys',
-    loadComponent: () =>
-      import('./deliverys/pages/deliverys-home/deliverys-home.component').then(
-        (c) => c.DeliverysHomeComponent
-      ),
+      import('./layout/layout.component').then((c) => c.LayoutComponent),
+    children: [
+      {
+        path: 'store',
+        loadComponent: () =>
+          import('./products/pages/store/store.component').then(
+            (c) => c.StoreComponent
+          ),
+      },
+      {
+        path: 'deliverys',
+        loadComponent: () =>
+          import(
+            './deliverys/pages/deliverys-home/deliverys-home.component'
+          ).then((c) => c.DeliverysHomeComponent),
+      },
+    ],
   },
 ];

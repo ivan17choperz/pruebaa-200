@@ -1,0 +1,15 @@
+@if (infoProduct()) {
+<div
+  class="min-w-[300px] max-w-[350px] min-h-[300px] flex flex-col items-center justify-center p-5 shadow-lg border rounded-lg"
+>
+  <img [src]="infoProduct().image" class="h-52 mb-1" alt="" />
+  <p class="font-semibold truncate w-40 mb-1">{{ infoProduct().title }}</p>
+  <p class="font-bold mb-1 text-lg">${{ infoProduct().price }}</p>
+
+  <button
+    class="p-3 border border-blue-500 text-blue-500 rounded shadow-md hover:bg-blue-500 hover:text-white transition-all"
+  >
+    Agregar al carrito
+  </button>
+</div>
+}

@@ -1,5 +1,13 @@
 import { ActionReducerMap } from '@ngrx/store';
 
-export interface AppState {}
+import * as UI from './shared/ui.reducer';
+import * as AUTH from './modules/auth/auth.reducer';
+export interface AppGloblalState {
+  ui: UI.State;
+  auth: AUTH.State;
+}
 
-export const initialState: ActionReducerMap<AppState> = {};
+export const initialState: ActionReducerMap<AppGloblalState> = {
+  ui: UI.reducer,
+  auth: AUTH.reducer,
+};

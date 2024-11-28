@@ -1,0 +1,11 @@
+@if (loader()) {
+<app-loader [msg]="'Cargando productos'" />
+}
+
+<div class="w-full grid gap-5 grid-cols-3 p-5">
+  @for (product of listProducts(); track $index) {
+  <div class="col-span-1">
+    <app-card-store [infoProduct]="product" />
+  </div>
+  }
+</div>
