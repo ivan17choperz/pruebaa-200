@@ -7,6 +7,7 @@
   <p class="font-bold mb-1 text-lg">${{ infoProduct().price }}</p>
 
   <button
+    (click)="addproductIntoCart(infoProduct())"
     class="p-3 border border-blue-500 text-blue-500 rounded shadow-md hover:bg-blue-500 hover:text-white transition-all"
   >
     Agregar al carrito

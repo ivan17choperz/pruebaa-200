@@ -11,11 +11,12 @@ import { AppGloblalState } from '../../../../app.reducer';
 import { LoaderComponent } from '../../../../shared/loader/loader.component';
 import { ProductsService } from '../../../../core/services/products.service';
 import { CardStoreComponent } from '../../components/card-store/card-store.component';
+import { CartStoreComponent } from '../../components/cart-store/cart-store.component';
 
 @Component({
   selector: 'app-store',
   standalone: true,
-  imports: [LoaderComponent, CardStoreComponent],
+  imports: [LoaderComponent, CardStoreComponent, CartStoreComponent],
   templateUrl: './store.component.html',
   styleUrl: './store.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,7 +27,7 @@ export class StoreComponent implements OnInit, OnDestroy {
 
   listProducts = signal<any>([]);
   loader = signal<boolean>(false);
-
+  showCartWindow = signal<boolean>(false);
   ngOnInit(): void {
     this.#_productsService.getProducts();
 

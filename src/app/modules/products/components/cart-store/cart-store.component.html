@@ -1,0 +1,56 @@
+<div
+  class=" w-full lg:w-6/12 h-screen bg-white fixed top-0 right-0 z-50 flex flex-col items-start justify-between p-5 border-l shadow-lg"
+>
+  <div class="w-full flex justify-between items-center border-b pb-3">
+    <h3 class="text-xl font-bold">Carrito</h3>
+    <button
+      class="text-red-600 font-semibold underline"
+      (click)="closeWindow()"
+    >
+      Cerrar
+    </button>
+  </div>
+
+  <ul
+    class="w-full min-h-[500px] max-h-[600px] overflow-y-auto flex flex-col items-start justify-start"
+  >
+    @for (product of listProducts(); track $index) {
+
+    <li class="w-full flex justify-around items-center px-2 py-3">
+      <img
+        [src]="product.image"
+        class="border rounded-lg p-2 w-2/12"
+        alt="producto"
+      />
+      <div class="text flex flex-col items-start justify-start w-4/12">
+        <p class="max-w-[120px] truncate">{{ product.title }}</p>
+      </div>
+      <div class="action flex flex-col items-end justify-start w-4/12">
+        <p class="font-bold">${{ product.price }}</p>
+        <button (click)="deleteProductCart(product)">
+          <i>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#e11d48"
+                d="M18 19a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V7H4V4h4.5l1-1h4l1 1H19v3h-1zM6 7v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V7zm12-1V5h-4l-1-1h-3L9 5H5v1zM8 9h1v10H8zm6 0h1v10h-1z"
+              />
+            </svg>
+          </i>
+        </button>
+      </div>
+    </li>
+    }
+  </ul>
+
+  <button
+  (click)="sendOrder()"
+    class="p-3 w-full font-semibold text-lg border border-blue-500 text-blue-500 rounded shadow-md hover:bg-blue-500 hover:text-white transition-all"
+  >
+    Generar pedido
+  </button>
+</div>

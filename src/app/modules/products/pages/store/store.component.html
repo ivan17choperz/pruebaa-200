@@ -2,10 +2,33 @@
 <app-loader [msg]="'Cargando productos'" />
 }
 
-<div class="w-full grid gap-5 grid-cols-3 p-5">
+<div class="w-full grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-5">
   @for (product of listProducts(); track $index) {
   <div class="col-span-1">
     <app-card-store [infoProduct]="product" />
   </div>
   }
 </div>
+<button
+  (click)="showCartWindow.set(true)"
+  class="p-5 rounded-full bg-black fixed bottom-5 right-5"
+>
+  <i>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="25"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="#ffffff"
+        d="M17 18c-1.11 0-2 .89-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2M1 2v2h2l3.6 7.59l-1.36 2.45c-.15.28-.24.61-.24.96a2 2 0 0 0 2 2h12v-2H7.42a.25.25 0 0 1-.25-.25q0-.075.03-.12L8.1 13h7.45c.75 0 1.41-.42 1.75-1.03l3.58-6.47c.07-.16.12-.33.12-.5a1 1 0 0 0-1-1H5.21l-.94-2M7 18c-1.11 0-2 .89-2 2a2 2 0 0 0 2 2a2 2 0 0 0 2-2a2 2 0 0 0-2-2"
+      />
+    </svg>
+  </i>
+</button>
+
+@if (showCartWindow()) {
+<app-cart-store (closeCart)="showCartWindow.set(false)" />
+
+}

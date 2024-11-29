@@ -1,1 +1,137 @@
-<p>deliverys-home works!</p>,
+@if(loader()){
+<app-loader [msg]="'Cargando pedidos'" />
+}
+
+<div class="w-full flex items-center justify-center pt-5">
+  <div class="max-w-[800px] max-h-[600px] mx-auto">
+    <div
+      class="relative flex flex-col w-full h-full text-slate-700 bg-white shadow-md rounded-xl bg-clip-border"
+    >
+      <div
+        class="relative mx-4 mt-4 overflow-hidden text-slate-700 bg-white rounded-none bg-clip-border"
+      >
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-semibold text-slate-800">
+              Lista de pedidos
+            </h3>
+          </div>
+        </div>
+      </div>
+      <div class="p-0 overflow-scroll">
+        <table class="w-full mt-4 text-left table-auto min-w-max">
+          <thead>
+            <tr>
+              <th
+                class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100"
+              >
+                <p
+                  class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500"
+                >
+                  Usuario
+                </p>
+              </th>
+              <th
+                class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100"
+              >
+                <p
+                  class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500"
+                >
+                  Fecha
+                </p>
+              </th>
+              <th
+                class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100"
+              >
+                <p
+                  class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500"
+                >
+                  Productos
+                </p>
+              </th>
+              <th
+                class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100"
+              >
+                <p
+                  class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500"
+                >
+                  Precio de compra
+                </p>
+              </th>
+              <th
+                class="p-4 transition-colors cursor-pointer border-y border-slate-200 bg-slate-50 hover:bg-slate-100"
+              >
+                <p
+                  class="flex items-center justify-between gap-2 font-sans text-sm font-normal leading-none text-slate-500"
+                ></p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @if(listDeliverys().length > 0){ @for (delivery of listDeliverys();
+            track $index) {
+            <tr>
+              <td class="p-4 border-b border-slate-200">
+                <div class="flex items-center gap-3">
+                  <img
+                    src="https://demos.creative-tim.com/test/corporate-ui-dashboard/assets/img/team-3.jpg"
+                    alt="John Michael"
+                    class="relative inline-block h-9 w-9 !rounded-full object-cover object-center"
+                  />
+                  <div class="flex flex-col">
+                    <p class="text-sm font-semibold text-slate-700">
+                      Simulacion de usuario
+                    </p>
+                    <p class="text-sm text-slate-500">localidad fake :V</p>
+                  </div>
+                </div>
+              </td>
+              <td class="p-4 border-b border-slate-200">
+                <div class="flex flex-col">
+                  <p class="text-sm font-semibold text-slate-700">
+                    {{ delivery.date }}
+                  </p>
+                  <p class="text-sm text-slate-500">Organization</p>
+                </div>
+              </td>
+              <td class="p-4 border-b border-slate-200">
+                <div class="w-max">
+                  <div
+                    class="relative grid items-center px-2 py-1 font-sans text-xs font-bold text-green-900 uppercase rounded-md select-none whitespace-nowrap bg-green-500/20"
+                  >
+                    @for (product of delivery.products; track $index) {
+                    <span class="truncate">{{ product.title }}</span
+                    >, }
+                  </div>
+                </div>
+              </td>
+              <td class="p-4 border-b border-slate-200">
+                <p class="text-sm text-slate-500">
+                  {{ delivery.total | currency }}
+                </p>
+              </td>
+              <td class="p-4 border-b border-slate-200">
+                <button>
+                  <i>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="25"
+                      height="25"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="#e11d48"
+                        d="M18 19a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3V7H4V4h4.5l1-1h4l1 1H19v3h-1zM6 7v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V7zm12-1V5h-4l-1-1h-3L9 5H5v1zM8 9h1v10H8zm6 0h1v10h-1z"
+                      />
+                    </svg>
+                  </i>
+                </button>
+              </td>
+            </tr>
+            } }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

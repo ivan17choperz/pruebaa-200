@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { BehaviorSubject, lastValueFrom, Observable, tap } from 'rxjs';
+import { AppGloblalState } from '../../app.reducer';
+import { loadActon, stopLoadActon } from '../../shared/ui.actions';
+import { setProducts } from '../../modules/products/store.actions';
 
 @Injectable({
   providedIn: 'root',
@@ -9,39 +13,40 @@ export class ProductsService {
   private _products: BehaviorSubject<any> = new BehaviorSubject<any>([]);
   public products$ = this._products.asObservable();
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(
+    private _httpClient: HttpClient,
+    private store: Store<AppGloblalState>
+  ) {}
 
   // products
   public async getProducts() {
+    this.store.dispatch(loadActon());
     const products = await lastValueFrom(
       this._httpClient.get('https://fakestoreapi.com/products')
     );
-
     if (!products) this._products.next([]);
-
+    this.store.dispatch(stopLoadActon());
+    this.store.dispatch(setProducts({ products }));
     this._products.next(products);
   }
 
-  public getProduct(id: number): Observable<any> {
-    return this._httpClient
-      .get(`https://fakestoreapi.com/products/${id}`)
-      .pipe(tap(console.log));
-  }
+  // public addProduct(product: any) {
+  //   this._products.next([...this._products.getValue(), product]);
+  // }
 
-  public addProduct(product: any): Observable<any> {
-    return this._httpClient.post('https://fakestoreapi.com/products', product);
-  }
+  // public updateProduct(product: any) {
+  //   const producto = this._products.getValue();
+  //   const index = producto.findIndex((prod: any) => prod.id === product.id);
+  //   producto[index] = product;
+  //   this._products.next(producto);
+  // }
 
-  public updateProduct(product: any): Observable<any> {
-    return this._httpClient
-      .put(`https://fakestoreapi.com/products/${product.id}`, product)
-      .pipe(tap(console.log));
-  }
+  // public deleteProduct(idProduct: any) {
+  //   const producto = this._products.getValue();
+  //   const index = producto.findIndex((prod: any) => prod.id === idProduct);
+  //   producto.splice(index, 1);
+  //   this._products.next(producto);
+  // }
 
-  public deleteProduct(idProduct: any): Observable<any> {
-    return this._httpClient.delete(
-      `https://fakestoreapi.com/products/${idProduct}`
-    );
-  }
   // deliverys
 }
