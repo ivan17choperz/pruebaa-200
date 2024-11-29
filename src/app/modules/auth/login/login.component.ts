@@ -72,6 +72,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       console.log('acceso correcto');
       setTimeout(() => {
         this.store.dispatch(stopLoadActon());
+        localStorage.setItem('user', JSON.stringify(user));
         this.store.dispatch(userAuthenticated());
         this._router.navigateByUrl('/modules/store');
       }, 3000);
