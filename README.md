@@ -1,27 +1,29 @@
 # TestApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
+Este es el codigo de la prueba, me he saltado unos loader por temas de tiempo por ejemplo cuando das en generar pedido ahi tenia que ir un loader 😅 pero como recalco por temas de tiempo y lo que deseaba era terminar la tarea en si, espero que si les guste si no, le pido que porfa me pasen el feedback si no logro pasar, no me pondre mal 😁
 
-## Development server
+### Recuerde tener instalado angular-v18
+```
+npm install
+```
+inicia el servidor
+```
+ng serve 
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+las credenciales son las siguietes (tiene guard y los datos de usuario estan harcodeados 😋):
+```
+{
+    user:root,
+    password:root
+}
+```
 
-## Code scaffolding
+link por si no les corre en local los deplegue en netifly
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+https://674a394fe9ef8a354c060451--remarkable-cobbler-9fd253.netlify.app/auth/login
+```
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### PSDTA
+lo de implementar github actions y dockerizar la app  si lo he hecho pero por temas de tiempo no logre implementarlo (solo me dieron dos dias) 
