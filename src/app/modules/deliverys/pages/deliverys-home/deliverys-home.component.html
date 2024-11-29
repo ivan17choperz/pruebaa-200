@@ -111,7 +111,7 @@
                 </p>
               </td>
               <td class="p-4 border-b border-slate-200">
-                <button>
+                <button (click)="deleteDelivery(delivery)">
                   <i>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,13 @@
                 </button>
               </td>
             </tr>
-            } }
+            } }@else {
+            <tr>
+              <td class="p-4 border-b border-slate-200">
+                <p class="text-sm text-slate-500">No hay pedidos</p>
+              </td>
+            </tr>
+            }
           </tbody>
         </table>
       </div>

@@ -12,6 +12,7 @@ import { lastValueFrom, Subscription } from 'rxjs';
 import { LoaderComponent } from '../../../../shared/loader/loader.component';
 import { loadActon, stopLoadActon } from '../../../../shared/ui.actions';
 import { CommonModule } from '@angular/common';
+import { deleteDelivery } from '../../../products/store.actions';
 
 @Component({
   selector: 'app-deliverys-home',
@@ -55,5 +56,11 @@ export class DeliverysHomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.#_storeSubscription) this.#_storeSubscription.unsubscribe();
+  }
+
+  public deleteDelivery(delivery: any) {
+    if (!delivery) return;
+
+    this.#_store.dispatch(deleteDelivery({ deliveryId: delivery.id }));
   }
 }

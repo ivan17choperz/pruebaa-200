@@ -46,5 +46,10 @@ export const reducer = createReducer(
   on(productsActions.addDelivery, (state, { deliverys }) => ({
     ...state,
     deliverys: [...state.deliverys, deliverys],
+  })),
+
+  on(productsActions.deleteDelivery, (state, { deliveryId }) => ({
+    ...state,
+    deliverys: state.deliverys.filter((d) => d && d.id !== deliveryId),
   }))
 );

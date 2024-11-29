@@ -1,6 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 
-export const setProducts = createAction('[PRODUCTS] setProducts', props<{ products: any }>());
+export const setProducts = createAction(
+  '[PRODUCTS] setProducts',
+  props<{ products: any }>()
+);
 
 export const addProductCart = createAction(
   '[PRODUCTS] addProductCart',
@@ -17,7 +20,14 @@ export const deleteProductCart = createAction(
 
 export const clearCart = createAction('[PRODUCTS] clearCart');
 
-
 // DELIVERY ACTIONS
 
-export const addDelivery = createAction('[DELIVERY] setDeliverys', props<{ deliverys: any }>());
+export const addDelivery = createAction(
+  '[DELIVERY] setDeliverys',
+  props<{ deliverys: any }>()
+);
+
+export const deleteDelivery = createAction(
+  '[DELIVERY] setDeliverys',
+  props<{ deliveryId: any }>()
+);
