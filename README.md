@@ -22,7 +22,7 @@ las credenciales son las siguietes (tiene guard y los datos de usuario estan har
 link por si no les corre en local los deplegue en netifly
 
 ```
-https://674a394fe9ef8a354c060451--remarkable-cobbler-9fd253.netlify.app/auth/login
+https://remarkable-cobbler-9fd253.netlify.app/auth/login
 ```
 
 ### PSDTA
