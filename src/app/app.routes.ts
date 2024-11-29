@@ -12,6 +12,9 @@ export const routes: Routes = [
     path: 'modules',
     loadChildren: () =>
       import('./modules/modules.routes').then((m) => m.routes),
+    canActivate: [
+      () => import('./core/guards/auth.guard').then((m) => m.authGuard),
+    ],
   },
   {
     path: '**',

@@ -52,6 +52,7 @@ export class CartStoreComponent implements OnInit, OnDestroy {
       id: Date.now(),
       date: new Date().toLocaleString(),
       products: this.listProducts(),
+      status: 'pendiente',
       total: this.listProducts().reduce((a: any, b: any) => a + b.price, 0),
     };
 

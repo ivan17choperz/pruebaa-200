@@ -48,6 +48,19 @@ export const reducer = createReducer(
     deliverys: [...state.deliverys, deliverys],
   })),
 
+  on(
+    productsActions.updateStatusDelivery,
+    (state, { deliveryId, status }) => (
+      console.log(deliveryId, status),
+      {
+        ...state,
+        deliverys: state.deliverys.map((d) =>
+          d.id === deliveryId ? { ...d, status } : d
+        ),
+      }
+    )
+  ),
+
   on(productsActions.deleteDelivery, (state, { deliveryId }) => ({
     ...state,
     deliverys: state.deliverys.filter((d) => d && d.id !== deliveryId),

@@ -1,0 +1,36 @@
+<div
+  class="z-50 flex items-center justify-center w-full h-screen fixed top-0 left-0"
+>
+  <div
+    class="w-[300px] p-5 flex flex-col justify-start items-start gap-3 bg-white rounded-lg border shadow-lg"
+  >
+    <p class="font-semibold text-lg">Actualizar estado del pedido</p>
+    <div class="w-full">
+      <select
+        name=""
+        [(ngModel)]="selection"
+        id=""
+        class="w-full border shadow p-3 rounded-lg"
+      >
+        <option value="entregado">Entregado</option>
+        <option value="cancelado">Cancelado</option>
+        <option value="pendiente">Pendiente</option>
+      </select>
+    </div>
+    <div class="w-full flex justify-end items-center">
+      <button
+        class="p-3 border border-blue-500 text-blue-500 rounded shadow-md hover:bg-blue-500 hover:text-white transition-all"
+        (click)="updateStatus()"
+      >
+        Actualizar
+      </button>
+      &nbsp; &nbsp; &nbsp;
+      <button
+        class="p-3 border border-red-500 text-red-500 rounded shadow-md hover:bg-red-500 hover:text-white transition-all"
+        (click)="updateStatus()"
+      >
+        Cerrar
+      </button>
+    </div>
+  </div>
+</div>

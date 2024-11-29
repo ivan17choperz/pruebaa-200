@@ -27,6 +27,11 @@ export const addDelivery = createAction(
   props<{ deliverys: any }>()
 );
 
+export const updateStatusDelivery = createAction(
+  '[DELIVERY] updateStatusDelivery',
+  props<{ deliveryId: any; status: any }>()
+);
+
 export const deleteDelivery = createAction(
   '[DELIVERY] setDeliverys',
   props<{ deliveryId: any }>()

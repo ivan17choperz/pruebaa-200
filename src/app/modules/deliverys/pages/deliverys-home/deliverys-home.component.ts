@@ -13,11 +13,13 @@ import { LoaderComponent } from '../../../../shared/loader/loader.component';
 import { loadActon, stopLoadActon } from '../../../../shared/ui.actions';
 import { CommonModule } from '@angular/common';
 import { deleteDelivery } from '../../../products/store.actions';
+import { AlertUpdateStatusComponent } from '../../components/alert-update-status/alert-update-status.component';
+import { identifierName } from '@angular/compiler';
 
 @Component({
   selector: 'app-deliverys-home',
   standalone: true,
-  imports: [CommonModule, LoaderComponent],
+  imports: [CommonModule, LoaderComponent, AlertUpdateStatusComponent],
   templateUrl: './deliverys-home.component.html',
   styleUrl: './deliverys-home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -29,6 +31,12 @@ export class DeliverysHomeComponent implements OnInit, OnDestroy {
   public listDeliverys = signal<any>([]);
 
   public loader = signal<boolean>(false);
+  public showUpdateStatusDialog = signal<boolean>(false);
+
+  public currentSeleccionAtUpdate = signal({
+    idDelivery: '',
+    status: '',
+  });
 
   ngOnInit(): void {
     this.#_store
@@ -62,5 +70,10 @@ export class DeliverysHomeComponent implements OnInit, OnDestroy {
     if (!delivery) return;
 
     this.#_store.dispatch(deleteDelivery({ deliveryId: delivery.id }));
+  }
+
+  public updateStatusDelivery(idDelivery: any, status: string) {
+    this.currentSeleccionAtUpdate.set({ idDelivery, status });
+    this.showUpdateStatusDialog.set(true);
   }
 }
